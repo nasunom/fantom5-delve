@@ -1,6 +1,8 @@
 FROM python:2.7
 MAINTAINER nasuno@ascade.co.jp
 
+RUN apt-get update && apt-get -y install libcurl4-nss-dev
+
 ADD http://fantom.gsc.riken.jp/5/suppl/delve/delve.tgz delve.tgz
 RUN tar zxf delve.tgz
 RUN cd delve/src && sed -i 's/\$(CC) \$(CFLAGS) \$(LD) \$(OBJECTS) -o \$(PROGS)/\$(CC) -o \$(PROGS) \$(OBJECTS) \$(CFLAGS) \$(LD)/' Makefile
